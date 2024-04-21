@@ -23,8 +23,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
+@SuppressWarnings("UnreachableCode")
 @Mixin(ServerPlayNetworkHandler.class)
 public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonNetworkHandler implements SidebarHolder {
 
@@ -100,7 +102,7 @@ public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonNetworkH
             for (SidebarLine line : this.sidebarApi$currentSidebar.getLinesFor(handler)) {
                 this.sidebarApi$lines[x] = line.immutableCopy(handler);
                 this.sendPacket(new ScoreboardScoreUpdateS2CPacket(
-                        SidebarAPIMod.FAKE_PLAYER_NAMES.get(x), SidebarAPIMod.OBJECTIVE_NAME, line.getValue(), line.getText(handler), line.getNumberFormat(handler)));
+                        SidebarAPIMod.FAKE_PLAYER_NAMES.get(x), SidebarAPIMod.OBJECTIVE_NAME, line.getValue(), Optional.of(line.getText(handler)), Optional.ofNullable(line.getNumberFormat(handler))));
                 x++;
             }
         }
@@ -125,7 +127,7 @@ public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonNetworkH
             if (this.sidebarApi$lines[index] == null || !this.sidebarApi$lines[index].equals(line, handler)) {
 
                 this.sendPacket(new ScoreboardScoreUpdateS2CPacket(
-                        SidebarAPIMod.FAKE_PLAYER_NAMES.get(index), SidebarAPIMod.OBJECTIVE_NAME, line.getValue(), line.getText(handler), line.getNumberFormat(handler)));
+                        SidebarAPIMod.FAKE_PLAYER_NAMES.get(index), SidebarAPIMod.OBJECTIVE_NAME, line.getValue(), Optional.of(line.getText(handler)), Optional.ofNullable(line.getNumberFormat(handler))));
 
                 this.sidebarApi$lines[index] = line.immutableCopy(handler);
             }
