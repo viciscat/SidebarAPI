@@ -6,6 +6,7 @@ import eu.pb4.sidebars.api.lines.ImmutableSidebarLine;
 import eu.pb4.sidebars.api.lines.SidebarLine;
 import eu.pb4.sidebars.impl.SidebarHolder;
 import net.minecraft.network.ClientConnection;
+import net.minecraft.network.DisconnectionInfo;
 import net.minecraft.network.packet.s2c.play.*;
 import net.minecraft.scoreboard.ScoreboardDisplaySlot;
 import net.minecraft.scoreboard.ServerScoreboard;
@@ -48,7 +49,7 @@ public abstract class ServerPlayNetworkHandlerMixin extends ServerCommonNetworkH
     }
 
     @Inject(method = "onDisconnected", at = @At("TAIL"))
-    private void sidebarApi$removeFromSidebars(Text reason, CallbackInfo ci) {
+    private void sidebarApi$removeFromSidebars(DisconnectionInfo info, CallbackInfo ci) {
         var handler = (ServerPlayNetworkHandler) (Object) this;
         for (SidebarInterface sidebar : new HashSet<>(this.sidebarApi$sidebars)) {
             sidebar.disconnected(handler);

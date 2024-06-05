@@ -21,7 +21,7 @@ public class SidebarAPIMod implements ModInitializer {
     @Override
     public void onInitialize() {
         for (int x = 0; x < 15; x++) {
-            String fakePlayerName = String.format("$pb§%s§r", Integer.toHexString(x));
+            String fakePlayerName = String.format("$.%s", Integer.toHexString(x));
             FAKE_PLAYER_NAMES.add(fakePlayerName);
         }
     }

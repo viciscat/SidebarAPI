@@ -45,7 +45,7 @@ public class TestMod implements ModInitializer {
                                 null,
                                 null,
                                 null,
-                                Math.random() > 0.6 ? new Identifier("default") : Math.random() > 0.3 ? new Identifier("uniform") : new Identifier("alt")
+                                Math.random() > 0.6 ? Identifier.of("default") : Math.random() > 0.3 ? Identifier.of("uniform") : Identifier.of("alt")
                                 )
                 ), new StyledNumberFormat( StyleAccessor.invokeInit(
                         TextColor.fromRgb((int) (Math.random() * 0xFFFFFF)),
@@ -57,7 +57,7 @@ public class TestMod implements ModInitializer {
                         null,
                         null,
                         null,
-                        Math.random() > 0.6 ? new Identifier("default") : Math.random() > 0.3 ? new Identifier("uniform") : new Identifier("alt")
+                        Math.random() > 0.6 ? Identifier.of("default") : Math.random() > 0.3 ? Identifier.of("uniform") : Identifier.of("alt")
                 )));
             }
 
@@ -97,7 +97,7 @@ public class TestMod implements ModInitializer {
                             null,
                             null,
                             null,
-                            Math.random() > 0.6 ? new Identifier("default") : Math.random() > 0.3 ? new Identifier("uniform") : new Identifier("alt")
+                            Math.random() > 0.6 ? Identifier.of("default") : Math.random() > 0.3 ? Identifier.of("uniform") : Identifier.of("alt")
                     )
             ));
 
@@ -130,7 +130,7 @@ public class TestMod implements ModInitializer {
                             null,
                             null,
                             null,
-                            Math.random() > 0.6 ? new Identifier("default") : Math.random() > 0.3 ? new Identifier("uniform") : new Identifier("alt")
+                            Math.random() > 0.6 ? Identifier.of("default") : Math.random() > 0.3 ? Identifier.of("uniform") : Identifier.of("alt")
                     )
             ));
             int speed = (int) (Math.random() * 20);
